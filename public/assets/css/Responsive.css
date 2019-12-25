@@ -1,0 +1,167 @@
+@media only screen and (max-width: 1199px) {
+    .gallery-work-container a {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+
+/**/
+@media only screen and (max-width: 1024px) {
+    .header-section .navbar-nav {
+        margin-top: 3%;
+    }
+
+    .slider-img-container {
+        height: 80vh;
+    }
+    .news-letter-container{
+        padding: 60px;
+    }
+}
+
+/**/
+@media only screen and (max-width: 992px) {
+    .header-section .nav > li > a {
+        padding: 10px;
+        font-size: 13px;
+        letter-spacing: normal !important;
+    }
+
+    .header-section .navbar-nav {
+        margin-top: 7%;
+    }
+
+    .form-heading {
+        padding: 20px;
+    }
+
+    .Galler-work-section .m-0 {
+        margin-bottom: 3em;
+    }
+}
+
+
+/**/
+@media only screen and (max-width: 920px) {
+    .slider-img img {
+        height: 100%;
+    }
+}
+
+
+/**/
+@media only screen and (max-width: 768px) {
+    .header-section .navbar-toggle {
+        margin-top: 35px;
+    }
+
+    .header-section .navbar-inverse .navbar-toggle .icon-bar {
+        background-color: red;
+    }
+
+    .header-section .navbar-inverse .navbar-toggle {
+        background-color: transparent;
+    }
+
+    .slider-img-container {
+        height: 60vh;
+    }
+
+    .slider-captions-container h1 {
+        font-size: 25px;
+    }
+
+    .captions {
+        margin-bottom: .5em;
+    }
+
+    .pkg-banner-section .row {
+        display: block;
+    }
+
+    .pkg-descriptions {
+        margin-bottom: 2em;
+    }
+
+    .gallery-work-container a {
+        padding: 10px;
+        font-size: 13px;
+    }
+    .news-letter-container{
+        padding: 40px;
+    }
+    .form-after button{
+        font-size: 11px;
+    }
+    .header-section .navbar-nav{
+        margin-top: 5%;
+    }
+}
+
+/**/
+@media only screen and (max-width: 570px) {
+    .slider-img img {
+        height: 100%;
+    }
+}
+
+/**/
+@media only screen and (max-width: 420px) {
+    .slider-section .owl-theme .owl-nav.disabled + .owl-dots {
+        top: 80%;
+    }
+
+    .work-container {
+        margin-bottom: 2em;
+    }
+
+    .Galler-work-section .col-sm-3,
+    .Galler-work-section .col-md-6,
+    .footer-container {
+        margin-bottom: 2em;
+    }
+
+    .pkg-descriptions {
+        text-align: center;
+    }
+
+    .pkg-descriptions h1, .section-Heading h1 {
+        font-size: 25px;
+    }
+    .work-gallery-descriptions h3, .benifit-description h3{
+        font-size: 20px;
+    }
+
+    .Blog-Date {
+        text-align: left;
+    }
+    p{
+        font-size: 15px;
+    }
+    .news-letter-container{
+        background-image: none;
+        padding: 0px;
+    }
+    .form-after{
+        border: none;
+    }
+    .form-after .form-control{
+        border: 1px solid #eee;
+        margin-bottom: 1em;
+    }
+    .Blog-Details li{
+        font-size: 13px;
+    }
+    .about-img{
+        display: none;
+    }
+    .designs-container{
+        margin-bottom: 3em;
+    }
+    .design-bttn{
+        top: 0;
+        top: 100%;
+        opacity: 1;
+    }
+}
