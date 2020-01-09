@@ -11,6 +11,7 @@
     View Services
 
   </h1>
+  @include('adminviews.includes.message')
 
 </section>
 
@@ -50,9 +51,7 @@
             <!-- /.box-header -->
 
             <div class="box-body">
-              @if(session('deleteservicemsg'))
-                {!!session('deleteservicemsg')!!}
-               @endif
+
               <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
 
                 <thead>
@@ -60,7 +59,33 @@
                 <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 125.8px;">Service ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;">Title</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Image</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Show</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Action</th></tr>
 
                 </thead>
+                <tbody>
+                  @foreach($service as $services)
 
+                  <tr role="row" class="even">
+
+                  <td class="sorting_1"><?php echo ($loop->index) + 1; ?></td>
+
+                  <td><?php echo $services->title; ?></td>
+
+                  <td><img style="width: 100px;height: 100px;" src="{{Storage::disk('public')->url($services->image)}}"></td>
+                  <td>
+                    @if($services->show == 1)
+                      Yes
+                    @else
+                      No
+                    @endif
+                  </td>
+                  <td>
+                       <a class="btn btn-primary" href="{{route('service.edit.show',$services->id)}}"><i class="fa fa-edit"></i></a>
+                         <a class="btn btn-danger" href="{{route('service.destroy',$services->id)}}"><i class="fa fa-trash"></i></a>
+                  </td>
+
+                </tr>
+
+               @endforeach
+
+                </tbody>
 
                 <tfoot>
 

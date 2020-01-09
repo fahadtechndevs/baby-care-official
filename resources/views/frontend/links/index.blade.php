@@ -288,7 +288,9 @@
                             <div class="benifit-container">
 
                                 <div class="benifit-image">
-                                    <img src="assets/images/benifits/1.jpg" alt="">
+                                    <img src="{{asset('assets/images/benifits/1.jpg
+
+                                        ')}}" alt="">
                                 </div>
                                 <div class="benifit-body">
                                     <div class="benifit-description">

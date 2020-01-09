@@ -1,77 +1,126 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register HTML</title>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+        <!-- Global stylesheets -->
+        @include('frontend.layouts.head')
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+    </head>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    <body>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+        <!-- header section starts -->
+        @include('frontend.layouts.header')
+        <!-- header section close -->
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+        <section class="repeat-section register-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                                        <div class="pkg-descriptions">
+                                            <form action="{{route('register.submit')}}" method="post">
+                                                @csrf
+                                                <div style="color: red">
+                                                    @include('adminviews.includes.message')
+                                                </div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                                                <div class="form-body">
+                                                    <div class="text-left">
+                                                    <h2>Register.</h2>
+                                                </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Name*" name="name">
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                                    </div>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Buisiness Name *" name="business_name">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="email" class="form-control" placeholder="Email Address *" name="email">
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Mobile Number *" name="mobile_number">
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder=" Your Mobile Number *" name="own_number">
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="City *" name="city">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="Country *" name="country">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="ZIP CODE *" name="zip_code">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="Address *" name="address">
+                                                            </div>
+
+                                                        </div>
+                                                         <div class="col-sm-12">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="Password *" name="password">
+                                                            </div>
+
+                                                        </div>
+                                                         <div class="col-sm-12">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="Confirm Your Password *" name="password_confirmation">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                            <input type="checkbox" id="forgotPass" name="term_conditions" value="agreed"><p style="color: green"> Do You Agree To Our Terms and Conditions ?</p>
+
+                                                    </div>
+                                                    <div class="submit-bttn">
+                                                        <button type="submit" class="bttn bttn-danger">Register</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-@endsection
+        </section>
+
+        <!-- Footer Section starts -->
+        @include('frontend.layouts.footer')
+
+        <!-- Footer Section close -->
+
+
+
+
+        <!-- Global scripts -->
+        @include('frontend.layouts.scripts')
+
+
+
+    </body>
+
+</html>

@@ -31,9 +31,9 @@
                                     <li><a href="#">Daycare Facebook Marketing</a></li>
                                     <li><a href="#">Child Care Website Design Solutions</a></li>
                                     <li><a href="#">Child Care Logo Design</a></li>
-                                    <li><a href="#">Search Engine Optimization</a></li>
-                                    <li><a href="#">The Website Setup Process</a></li>
-                                    <li><a href="#">FAQs</a></li>
+                                    <li><a href="{{route('blog.user')}}">Blogs</a></li>
+                                    <li><a href="{{route('user.service')}}">Our Services</a></li>
+                                    <li><a href="{{route('faqs.user')}}">FAQs</a></li>
                                 </ul>
                             </div>
                         </div>

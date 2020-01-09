@@ -33,6 +33,7 @@
         <div class="box-header with-border">
 
           <h3 class="box-title">Service</h3>
+          @include('adminviews.includes.message')
 
         </div>
 
@@ -40,20 +41,14 @@
 
         <!-- form start -->
 
-        <form method="post" action="{{-- {{route('service.store')}} --}}" role="form" enctype="multipart/form-data">
+        <form method="post" action="{{route('service.store')}}" role="form" enctype="multipart/form-data">
           @csrf
-         @if(session('addservicemsg'))
-          {!!session('addservicemsg')!!}
-         @endif
+
 
          <div class="box-body">
 
           <div class="form-group">
-              @error('title')
-              @component('includes.alert')
-              {{$message}}
-              @endcomponent
-              @enderror
+
             <label for="exampleInputEmail1">Title</label>
 
             <input  name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Title">
@@ -61,11 +56,7 @@
           </div>
 
           <div class="form-group">
-              @error('image')
-              @component('includes.alert')
-              {{$message}}
-              @endcomponent
-              @enderror
+
             <label for="exampleInputEmail1">Image</label>
 
             <input name="image" type="file" class="form-control" id="exampleInputEmail1" >
@@ -73,23 +64,15 @@
           </div>
 
           <div class="form-group">
-              @error('description')
-              @component('includes.alert')
-              {{$message}}
-              @endcomponent
-              @enderror
+
             <label for="exampleInputPassword1">Description</label>
 
-            <textarea id="details" class="form-control" name="description" rows="10">{{old('description')}}
+            <textarea id="details" class="form-control" name="description" rows="10">
             </textarea>
 
           </div>
            <div class="form-group">
-              @error('show')
-              @component('includes.alert')
-              {{$message}}
-              @endcomponent
-              @enderror
+
           <label for="exampleInputEmail1">Show</label>
           <select class="form-control" name="show" id="">
               <option value="1">Show</option>

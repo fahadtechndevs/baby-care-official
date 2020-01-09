@@ -32,7 +32,23 @@
         <section class="repeat-section Designs-section">
             <div class="container">
                 <div class="row">
+                    @foreach($themes as $theme)
                     <div class="col-sm-4">
+                        <div class="designs-container">
+
+                            <div class="designs-img">
+                                <a href="#">
+                                    <img src="{{Storage::disk('public')->url($theme->image)}}" alt="">
+                                </a>
+                            </div>
+                            <div class="design-overlay"></div>
+                            <div class="design-bttn text-center">
+                                <a href="{{$theme->url}}" class="bttn bttn-danger">View Portfolio</a>
+                            </div>
+
+                        </div>
+                    </div>
+                   {{--  <div class="col-sm-4">
                         <div class="designs-container">
 
                             <div class="designs-img">
@@ -61,22 +77,8 @@
                             </div>
 
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="designs-container">
-
-                            <div class="designs-img">
-                                <a href="#">
-                                    <img src="{{asset('assets/images/designs/babycare.png')}}" alt="">
-                                </a>
-                            </div>
-                            <div class="design-overlay"></div>
-                            <div class="design-bttn text-center">
-                                <a href="#" class="bttn bttn-danger">View Portfolio</a>
-                            </div>
-
-                        </div>
-                    </div>
+                    </div> --}}
+                    @endforeach
                 </div>
             </div>
         </section>

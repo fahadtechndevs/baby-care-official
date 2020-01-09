@@ -25,85 +25,15 @@
     <section class="repeat-section inquiry-form-section">
         <div class="container">
             <div class="inquiry-form-container">
-                <form action="">
+                <div style="color: red">
+                     @include('adminviews.includes.message')
+                </div>
+
+                <form action="{{route('order.form.submit')}}" method="post">
+                    @csrf
                    <h3>Inquire Now</h3>
                     <div class="row">
                         <div class="col-sm-12">
-                            <!-- contact Details -->
-                            <div class="contact-details">
-                                <p>Your contact details (*required fields)</p>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="* Name" name="name">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Buisinis Name" name="business_name">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="* Email Address" name="email">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <input type="tel" class="form-control" placeholder="Mobile Number" name="mobile_number">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="form-group">
-                                            <p style="display: inline-block;margin-right: 10px"> Is this your mobile #? </p>
-                                            <label for="#yes">
-                                                <input type="radio"  value="yes" name="mobile"> Yes
-                                            </label>
-                                            <label for="#no">
-                                                <input type="radio"  value="no" name="mobile"> No
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12" id="d-none">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Your Mobile Number">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <div class="form-group">
-                                                    <p style="display: inline-block;margin-right: 10px"> Yes, you can text me at this number</p>
-                                                    <label for="">
-                                                        <input type="checkbox" id="yes">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Address" name="address">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="City" name="city">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="State/ Province" name="province">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Zip/ Postal" name="zip">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
 
                             <!-- services Details -->
                             <div class="contact-details">
@@ -115,36 +45,47 @@
                                             <!-- website -->
                                             <div class=" webssite">
                                                 <h4>Website</h4>
+
                                                 <!-- choose package -->
+
                                                 <div class="package choose-pkg">
                                                     <p>Choose Package</p>
+                                                    @foreach($packages as $package)
+
                                                     <label for="">
-                                                        <input type="radio" name="package" value="basic"> Basic ($169 Setup fee)
+                                                        <input type="radio" name="package_id" value="{{$package->id}}">
+                                                        {{$package->title}}({{$package->price}})
+
+
+
                                                     </label>
-                                                    <label for="">
-                                                        <input type="radio" name="package" value="plus"> Plus ($359 Setup fee)
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="radio" name="package" value="professional"> Professional ($599 Setup fee)
-                                                    </label>
+                                                    @endforeach
+
+
                                                 </div>
+
                                                 <!-- tempalte or cv -->
                                                 <div class="package tempalte">
                                                     <p>Template or Custom Design?</p>
                                                     <label for="">
-                                                        <input type="checkbox" name="template" value="tmplte"> I will choose a template
+                                                        <input type="radio" name="template_logo" value="I Will Choose A Template">I Will Choose A Template
                                                     </label>
                                                     <label for="">
-                                                        <input type="checkbox" name="package" value="design"> I want a custom design (add $1000)
+                                                        <input type="radio" name="template_logo" value="I Want A Custom Design (Add $1000)">I Want A Custom Design (Add $1000)
                                                     </label>
                                                 </div>
 
                                                 <!-- specific design -->
                                                 <p>If you have chosen Template, please specify Template Name:</p>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="Babycare">
-                                                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                                </div>
+                                                <div class="form-group">
+
+                                                        <select class="form-control" name="theme_id">
+                                                            @foreach($themes as $theme)
+                                                            <option value="{{$theme->id}}">{{$theme->title}}</option>
+                                                         @endforeach
+                                                        </select>
+
+                                                    </div>
                                                 <a href="#" class="special"> or check list of templates here</a>
                                             </div>
                                             <!-- More Freatures and ?Services -->
@@ -153,51 +94,13 @@
                                                 <p>Please select any additional features you are interested in that are not part of your selected package above</p>
 
                                                 <div class="package choose-pkg">
+                                                    @foreach($features as $feature)
                                                     <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Homepage Animation Banner
+                                                        <input type="checkbox" name="features[]" value="{{$feature->id}}">
+                                                         {{$feature->title}}
                                                     </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Paypal Payment Buttons
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Email Newsletter Design
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Secure Parent or Employee Pages
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Facebook Graphic Design
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Flash Photo Gallery
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Upgraded Photo Gallery
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Facebook Fan Page Design
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Secure Parent Portal
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Secure Staff Portal
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Paypal Button Installation
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Create Fillable PDF Forms
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Child Care Graphic Design
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Detailed Career Inquiry Form
-                                                    </label>
-                                                    <label for="">
-                                                        <input type="checkbox" name="package" value="homepage"> Wordpress Blog
-                                                    </label>
+                                                    @endforeach
+
                                                 </div>
                                             </div>
 
@@ -213,13 +116,13 @@
                                                 <div class="package choose-pkg">
                                                     <p>Please select one</p>
                                                     <label for="">
-                                                        <input type="radio" name="package" value="basic"> I already have a logo design that I want to use
+                                                        <input type="radio" name="logo_design" value="I Already Have A Logo Design That I Want To Use">I Already Have A Logo Design That I Want To Use
                                                     </label>
                                                     <label for="">
-                                                        <input type="radio" name="package" value="plus"> I do not have one and want to use a simple, text-based logo
+                                                        <input type="radio" name="logo_design" value="I Do Not Have One And Want To Use A Simple, Text-Based Logo">I Do Not Have One And Want To Use A Simple, Text-Based Logo
                                                     </label>
                                                     <label for="">
-                                                        <input type="radio" name="package" value="professional"> I would like Websites for Daycares to design a new logo (add $349)
+                                                        <input type="radio" name="logo_design" value="I Would Like Websites For Daycares To Design A New Logo (Add $349)">I Would Like Websites For Daycares To Design A New Logo (Add $349)
                                                     </label>
                                                 </div>
                                             </div>
@@ -230,25 +133,24 @@
                                                 <div class="package choose-pkg">
                                                     <p>Please select one</p>
                                                     <label for="">
-                                                        <input type="radio" name="package" value="basic"> I already own my domain. My domain is
+                                                        <input type="radio" name="domain_details" value="I Already Own My Domain. My Domain Is">I Already Own My Domain. My Domain Is
                                                     </label>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="www.">
-                                                    </div>
+
                                                     <label for="">
-                                                        <input type="radio" name="package" value="plus"> I need to purchase a domain. I would like to secure
+                                                        <input type="radio" name="domain_details" value="I Need To Purchase A Domain. I Would Like To Secure"> I Need To Purchase A Domain. I Would Like To Secure
                                                     </label>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="www.">
+                                                        <input type="url" class="form-control" placeholder="www." name="own_domain">
                                                     </div>
+
 
                                                     <p>I would like to pay the Web & Email Hosting & Support (annually saves 20%):</p>
 
                                                     <label for="">
-                                                        <input type="radio" name="package" value="professional"> $19 Monthly
+                                                        <input type="radio" name="extra_pay" value="$19 Monthly"> $19 Monthly
                                                     </label>
                                                     <label for="">
-                                                        <input type="radio" name="package" value="professional"> $180 Annually
+                                                        <input type="radio" name="extra_pay" value=" $180 Annually"> $180 Annually
                                                     </label>
                                                 </div>
                                             </div>
@@ -258,17 +160,17 @@
                                                 <div class="package choose-pkg">
                                                     <p>Are you ready to get started?</p>
                                                     <label for="">
-                                                        <input type="radio" name="package" value="basic"> Yes - I am ready to get started!
+                                                        <input type="radio" name="notes" value="Yes - I Am Ready To Get Started!">Yes - I Am Ready To Get Started!
                                                     </label>
                                                     <label for="">
-                                                        <input type="radio" name="package" value="basic"> Not sure / Just inquiring
+                                                        <input type="radio" name="notes" value="Not Sure / Just Inquiring">Not Sure / Just Inquiring
                                                     </label>
                                                     <label for="">
-                                                        <input type="radio" name="package" value="basic"> I would like to setup a phone consultation to go over my questions.
+                                                        <input type="radio" name="notes" value="I Would Like To Setup A Phone Consultation To Go Over My Questions">I Would Like To Setup A Phone Consultation To Go Over My Questions
                                                     </label>
                                                     <br>
                                                     <label for="">Additional Comments</label>
-                                                    <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                                                    <textarea name="additional_comments" id="" cols="30" rows="10" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -280,7 +182,13 @@
                     <div class="button text-center">
                         <button class="bttn bttn-danger">Submit</button>
                     </div>
+
                 </form>
+                <div class="button text-right">
+                    <a href="{{route('show.order')}}">
+                        <button class="bttn bttn-danger">Go Next</button>
+                    </a>
+                 </div>
             </div>
         </div>
     </section>
