@@ -56,7 +56,9 @@
 
                 <thead>
 
-                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 125.8px;">Package Id</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;">Titles</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Features</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Action</th></tr>
+                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 125.8px;">Package Id</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;">Titles</th>
+                  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;">Details</th>
+                  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">duraction</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Features</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Action</th></tr>
 
                 </thead>
 
@@ -70,6 +72,8 @@
                   <td>
                    {{$package->title}}
                   </td>
+                  <td>{{$package->details}}</td>
+                  <td>{{$package->duraction}}&nbsp;&nbsp;Months</td>
 
                   <td>
                     {{-- @dd($package->features) --}}
@@ -79,9 +83,10 @@
                     @endforeach
                   </td>
 
+
                   <td>
 
-                    <a class="btn btn-primary" href="{{-- {{route('packages.update',$package->id)}} --}}"><i class="fa fa-edit"></i></a>
+                    <a class="btn btn-primary" href="{{route('packages.update',$package->id)}}"><i class="fa fa-edit"></i></a>
                     <a class="btn btn-danger" href="{{route('packages.destroy',$package->id)}}"><i class="fa fa-trash"></i></a>
 
 
@@ -95,7 +100,7 @@
 
                 <tfoot>
 
-                <tr><th rowspan="1" colspan="1">Package ID</th><th rowspan="1" colspan="1">Title</th><th rowspan="1" colspan="1">Feature</th><th rowspan="1" colspan="1">Action</th></tr>
+                <tr><th rowspan="1" colspan="1">Package ID</th><th rowspan="1" colspan="1">Title</th><th rowspan="1" colspan="1">Details</th><th rowspan="1" colspan="1">Duraction</th><th rowspan="1" colspan="1">Feature</th><th rowspan="1" colspan="1">Action</th></tr>
 
                 </tfoot>
 

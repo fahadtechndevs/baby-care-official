@@ -8,7 +8,7 @@
 
   <h1>
 
-   Please Update Selected Service
+   Please Update Selected Themes
 
   </h1>
 
@@ -41,7 +41,7 @@
 
         <!-- form start -->
 
-        <form method="post" action="{{-- {{route('service.edit.store',$data->id)}} --}}" role="form" enctype="multipart/form-data">
+        <form method="post" action="{{route('themeEditStore',$data->id)}}" role="form" enctype="multipart/form-data">
           @csrf
 
 
@@ -51,37 +51,29 @@
 
             <label for="exampleInputEmail1">Title</label>
 
-            <input  name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Title" value="{{-- {{$data->title}} --}}">
+            <input  name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Title" value="{{$data->title}}">
 
           </div>
+              <div class="form-group">
+
+            <label for="exampleInputEmail1">Url</label>
+
+            <input  name="url" type="url" class="form-control" id="exampleInputEmail1" placeholder="Url" value="{{$data->url}}">
+
+          </div>
+          <label for="exampleInputEmail1">Image</label>
 
           <div class="form-group">
-            {{-- <img width="100px" height="100px" src="{{Storage::disk('public')->url($data->image)}}"> --}}
+            <img width="200px" height="200px" src="{{Storage::disk('public')->url($data->image)}}">
 
-            <label for="exampleInputEmail1">Image</label>
+
+
 
 
             <input name="image" type="file" class="form-control" id="exampleInputEmail1" >
 
           </div>
 
-          <div class="form-group">
-
-            <label for="exampleInputPassword1">Description</label>
-
-            <textarea id="details" class="form-control" name="description" rows="10">
-             {{$data->descriptions}}
-            </textarea>
-
-          </div>
-           <div class="form-group">
-
-          <label for="exampleInputEmail1">Show</label>
-          <select class="form-control" name="show" id="">
-              {{--  <option @if($data->show == '1') selected @endif value="1">Show</option>
-              <option @if($data->show == '0') selected @endif value="0">Hide</option> --}}
-            </select>
-          </div>
           <div class="box-footer">
 
             <button type="submit" class="btn btn-primary">Submit</button>

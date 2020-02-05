@@ -19,10 +19,21 @@ use PayPal\Rest\ApiContext;
 class OrderController extends Controller {
 	public function paypal($id) {
 		$data = Order::find($id);
+		// $this->pata = $data;
 		$package_id = $data->package_id;
-		$package = PackagesModel::find($package_id);
+		$package = PackagesModel::where('id', $package_id)->first();
+
 		$price = $package->price;
-		if (!$price == "") {
+		$myprice = $price;
+		$duraction = $package->duraction;
+		$exdata = date('Y-m-d', strtotime("+$duraction months"));
+		$data->order_exp_data = $exdata;
+		$data->status_id = 5;
+		if ($data->update()) {
+			echo "Okkk";
+		}
+
+		if (!$myprice == "") {
 			$apiContext = new ApiContext(
 				new OAuthTokenCredential(
 					env('PAYPAL_CLIENT_ID'),
@@ -41,7 +52,7 @@ class OrderController extends Controller {
 // Set payment amount
 			$amount = new Amount();
 			$amount->setCurrency("USD")
-				->setTotal(20);
+				->setTotal($myprice);
 
 // Set transaction object
 			$transaction = new Transaction();
@@ -50,6 +61,7 @@ class OrderController extends Controller {
 
 // Create the full payment object
 			$payment = new Payment();
+
 			$payment->setIntent('sale')
 				->setPayer($payer)
 				->setRedirectUrls($redirectUrls)
@@ -61,7 +73,6 @@ class OrderController extends Controller {
 
 				// Get PayPal redirect URL and redirect the customer
 				$approvalUrl = $payment->getApprovalLink();
-				// $data = Auth()->user();
 
 				return redirect($approvalUrl);
 
@@ -77,6 +88,7 @@ class OrderController extends Controller {
 		} else {
 			echo "no payment";
 		}
+
 	}
 	public function processPaypal(Request $request) {
 
@@ -107,8 +119,14 @@ class OrderController extends Controller {
 		} catch (Exception $ex) {
 			die($ex);
 		}
+
+		return redirect()->route('show.order');
 	}
 	public function cancelPaypal() {
+		// dd($this->pata);
+		// dd($this->duraction);
+		$exdata = date('Y-m-d', strtotime('+2 months'));
+		dd($exdata);
 
 	}
 }

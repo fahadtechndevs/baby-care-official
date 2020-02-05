@@ -62,7 +62,7 @@
                   {{--  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;">Domain Url</th> --}}
                   <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;">Extra Pay</th>
                   <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;">Features</th>
-                  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;">Comments</th>
+                  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 157px;">Status</th>
                   <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Action</th></tr>
 
                 </thead>
@@ -106,9 +106,15 @@
                       @endforeach
                       @endforeach
                      </td>
-                     <td>{{$order->additional_comments}}</td>
-                     <td><a class="btn btn-primary" href="{{-- {{route('service.edit.show',$services->id)}} --}}"><i class="fa fa-edit"></i></a>
-                         <a class="btn btn-danger" href="{{-- {{route('service.destroy',$services->id)}} --}}"><i class="fa fa-trash"></i></a></td>
+                     <td>@foreach($status as $state)
+                     @if($state->id==$order->status_id)
+                     {{$state->status}}
+                     @endif
+
+                      @endforeach</td>
+                     <td><a class="btn btn-primary" href="{{route('order.status',$order->id)}}"><i class="fa fa-edit"></i></a>
+                      <a class="btn btn-primary" href="{{route('renew',$order->id)}}"><i class="fa fa-refresh"></i></a>
+                         </td>
                   </tr>
                   @endforeach
 

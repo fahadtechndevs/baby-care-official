@@ -56,7 +56,7 @@
 
                 <thead>
 
-                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 125.8px;">Feature ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Title</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Action</th></tr>
+                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 125.8px;">Feature ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Title</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Price</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 138.6px;">Action</th></tr>
 
                 </thead>
 
@@ -68,6 +68,7 @@
                   <td class="sorting_1"><?php echo ($loop->index) + 1; ?></td>
 
                   <td>{{$feature->title}}</td>
+                  <td>{{$feature->price}}</td>
 
 
                   <td>
@@ -86,7 +87,7 @@
 
                 <tfoot>
 
-                <tr><th rowspan="1" colspan="1">Feature ID</th><th rowspan="1" colspan="1">Title</th><th rowspan="1" colspan="1">Action</th></tr>
+                <tr><th rowspan="1" colspan="1">Feature ID</th><th rowspan="1" colspan="1">Title</th><th rowspan="1" colspan="1">Price</th><th rowspan="1" colspan="1">Action</th></tr>
 
                 </tfoot>
 

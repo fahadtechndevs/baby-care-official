@@ -4,9 +4,9 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-  Edit Packages
+  Please Update Seleted Packages
   </h1>
-   <br>
+  <br>
   @include('adminviews.includes.message')
 </section>
 <!-- Main content -->
@@ -17,7 +17,7 @@
       <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Packages</h3>
+          <h3 class="box-title"> Update Packages</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
@@ -34,7 +34,58 @@
 
               <label for="exampleInputPassword1">Price</label>
               <input value="{{$package->price}}" name="price" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Price">
+
             </div>
+            <div class="form-group">
+
+              <label for="exampleInputPassword1">Duraction</label>
+              <input value="{{$package->duraction}}" name="duraction" type="text" class="form-control" id="exampleInputEmail1" placeholder="like 2,3,4">
+
+            </div>
+             <div class="form-group">
+
+              <label for="exampleInputPassword1">Package Details</label>
+              <textarea id="answer" class="form-control" name="details" rows="10">{{$package->details}}
+              </textarea>
+            </div>
+             <div class="form-group">
+
+            <label for="exampleInputPassword1">Please Select Features</label><br>
+             <div class="box-body">
+
+              <table id="example1" class="table table-bordered table-striped">
+
+                <thead>
+
+                <th>Feature Id</th>
+                <th>Feature Title</th>
+                <th>Value</th>
+
+                </thead>
+
+                <tbody>
+                  @foreach($features as $feature)
+
+                  <tr role="row" class="even">
+                    <td class="sorting_1"><?php echo ($loop->index) + 1; ?></td>
+                    <td>{{$feature->title}}</td>
+                    <td><input type="checkbox" name="feature[]" value="{{$feature->id}}" @foreach($package_feature as $pfeature) @if($pfeature->feature_id==$feature->id)
+                    checked @endif @endforeach>
+
+                      </td>
+
+                </tr>
+
+               @endforeach
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+            </div>
+
             <div class="box-footer">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
@@ -50,7 +101,7 @@
 @section('pagejs')
 <script type="">
 $(function(){
-CKEDITOR.replace( 'answer');
+CKEDITOR.replace('answer');
 });
 
 </script>

@@ -28,11 +28,18 @@
                             <li><a href="{{route('logo.design')}}">Logo Designs</a></li>
                             <li><a href="{{route('index')}}">Support</a></li>
                             <li><a href="{{route('about')}}">About</a></li>
-                            {{-- <li><a href="{{route('form')}}">Get Started</a></li> --}}
+                            <li><a href="{{route('user.packages')}}">Packages</a></li>
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{{ route('login') }}"> <span class="fa fa-lock"></span> Login  </a></li>
+                            @if (Auth::check())
+                             <li><a href="{{ route('logout') }}"> <span class="fa fa-lock"></span> Login Out </a></li>
+
+                            @else
+                             <li><a href="{{ route('login') }}"> <span class="fa fa-lock"></span> Login  </a></li>
+
+                            @endif
+
                             <li><a href="{{ route('register') }}"> <span class="fa fa-sign-in-alt"></span> Sign up  </a></li>
                         </ul>
                     </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Register HTML</title>
+        <title>Register User</title>
 
         <!-- Global stylesheets -->
         @include('frontend.layouts.head')
@@ -46,10 +46,7 @@
                                                         <input type="email" class="form-control" placeholder="Email Address *" name="email">
 
                                                     </div>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Mobile Number *" name="mobile_number">
 
-                                                    </div>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder=" Your Mobile Number *" name="own_number">
 

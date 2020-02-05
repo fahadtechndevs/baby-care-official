@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 use App\FeatureModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FeatureController extends Controller {
 	public function show() {
-		$features = FeatureModel::paginate(10);
+		$features = FeatureModel::all();
 		return view('adminviews.feature.view', compact('features'));
 	}
 	public function add() {
@@ -21,12 +22,22 @@ class FeatureController extends Controller {
 		$request->validate([
 
 			'title' => 'required|string',
+			'price' => 'required|string',
 
 		]);
 
 		$data = new FeatureModel();
 		$data->title = $request->title;
+		$data->price = $request->price;
 		if ($data->save()) {
+			$data = array('name' => "Fahad Yaseen", "body" => "Test mail");
+
+			Mail::send('emails.remainder', $data, function ($message) {
+				$message->to('fahad4312l@gmail.com', 'Fahad Ali')
+					->subject('Testing Email From OnlineShop');
+				$message->from('hinashah24031995@gmail.com', 'Hi');
+			});
+
 			return back()->withSuccess('Feature is Added Successfully');
 
 		} else {
@@ -47,12 +58,14 @@ class FeatureController extends Controller {
 		$request->validate([
 
 			'title' => 'required|string',
+			'price' => 'required|string',
 
 		]);
 
 		$data = FeatureModel::find($id);
 
 		$data->title = $request->title;
+		$data->price = $request->price;
 		if ($data->update()) {
 			return back()->withSuccess('Feature is updated Successfully');
 

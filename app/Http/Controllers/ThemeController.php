@@ -13,6 +13,30 @@ class ThemeController extends Controller {
 		return view('adminviews.themes.create');
 
 	}
+	public function themeEditShow($id) {
+		$data = ThemeModel::find($id);
+
+		return view('adminviews.themes.update', compact('data'));
+	}
+	public function themeEditStore(Request $request, $id) {
+		$request->validate(['url' => 'required|active_url',
+			'title' => 'required|string',
+		]);
+		// $data = $request->all();
+		$data = ThemeModel::find($id);
+		$data->title = $request->title;
+		$data->url = $request->url;
+		if ($request->hasfile('image')) {
+			$data->image = $request->image->store('uploads');
+
+		}
+		if ($data->update()) {
+			return redirect()->route('themes.view')->withSuccess('Theme Is Updated Successfully');
+		} else {
+			return redirect()->route('themes.view')->withError('Something Went Wrong');
+		}
+
+	}
 	public function store(Request $request) {
 		$request->validate(['url' => 'required|string',
 			'title' => 'required|string',

@@ -38,6 +38,18 @@
             </div>
              <div class="form-group">
 
+              <label for="exampleInputPassword1">Please Add Package Duraction</label>
+              <input value="" name="duraction" type="text" class="form-control" id="exampleInputEmail1" placeholder="like 2 months">
+
+            </div>
+            <div class="form-group">
+
+              <label for="exampleInputPassword1">Package Details</label>
+              <textarea id="answer" class="form-control" name="details" rows="10">
+              </textarea>
+            </div>
+             <div class="form-group">
+
             <label for="exampleInputPassword1">Please Select Features</label><br>
              <div class="box-body">
 
@@ -57,7 +69,7 @@
                   <tr role="row" class="even">
                     <td class="sorting_1"><?php echo ($loop->index) + 1; ?></td>
                     <td>{{$feature->title}}</td>
-                    <td><input type="checkbox" name="feature[]" value="{{$feature->id}}"></td>
+                    <td><input type="checkbox" name="feature_id[]" value="{{$feature->id}}"></td>
 
                 </tr>
 

@@ -9,6 +9,10 @@ class BlockController extends Controller {
 		$blogs = BlocksModel::paginate();
 		return view('adminviews.blocks.view', compact('blogs'));
 	}
+	public function viewBlogDetails($id) {
+		$blog = BlocksModel::find($id);
+		return view('frontend.links.blogs.blogDetails', compact('blog'));
+	}
 	public function create() {
 		return view('adminviews.blocks.add');
 	}

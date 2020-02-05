@@ -15,26 +15,38 @@ class PackagesController extends Controller {
 
 		return view('adminviews.packages.view', compact('alldata'));
 	}
+	public function packageUserView() {
+		$alldata = PackagesModel::with('features')->get();
+
+		return view('frontend.links.packages', compact('alldata'));
+
+	}
 	public function add() {
 		$features = FeatureModel::all();
 		return view('adminviews.packages.add', compact('features'));
 	}
 	public function updateView($id) {
 		$package = PackagesModel::find($id);
-		return view('adminviews.packages.update', compact('package'));
+		$package_feature = PackageFeatureModel::where('package_id', $id)->get();
+		$features = FeatureModel::all();
+		return view('adminviews.packages.update', compact('package', 'features', 'package_feature'));
 	}
 
 	public function create(Request $request) {
 		// dd($request->all());
 		$request->validate([
 			'title' => 'required|string',
-			'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+			'price' => 'required|string',
+			'duraction' => 'bail|required|numeric',
+			'details' => 'bail|required|string',
 
 		]);
 
 		$data = new PackagesModel();
 		$data->title = $request->title;
 		$data->price = $request->price;
+		$data->duraction = $request->duraction;
+		$data->details = $request->details;
 		$data->save();
 		$data->features()->sync($request->feature);
 		// $package_id = $data->id;
@@ -62,15 +74,28 @@ class PackagesController extends Controller {
 	public function updateStore(Request $request, $id) {
 		$request->validate([
 			'title' => 'required|string',
-			'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+			'price' => 'required|String',
+			'duraction' => 'required|numeric',
+			'details' => 'required|string',
 
 		]);
-
+		$features = $request->feature;
 		$data = PackagesModel::find($id);
+		PackageFeatureModel::where('package_id', $id)->delete();
+		// $pata = new PackageFeatureModel();
+		// foreach ($features as $fee) {
+		// 	$pata->feature_id = $fee;
+		// 	$pata->package_id = $id;
+		// 	$pata->save();
+		// }
+		$data->features()->sync($request->feature);
 		$data->title = $request->title;
 		$data->price = $request->price;
+		$data->duraction = $request->duraction;
+		$data->details = $request->details;
+
 		if ($data->update()) {
-			return back()->withSuccess('Packages is updated Successfully');
+			return redirect()->route('packages.view')->withSuccess('Packages is updated Successfully');
 
 		} else {
 			return back()->withError('SomeThing Went Wrongs');

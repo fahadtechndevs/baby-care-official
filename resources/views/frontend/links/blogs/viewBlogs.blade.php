@@ -33,13 +33,13 @@
                                 <img src="{{Storage::disk('public')->url($blog->image)}}" alt="">
                             </div>
                             <div class="Blogs-Desc Blog-Details">
-                                <h3><a href="#">{{$blog->title}}</a></h3>
+                                <h3><a href="">{{$blog->title}}</a></h3>
                                 <p>{{$blog->details}}</p>
                                 <ul style="margin-bottom: 1em">
                                     <li><span class="far fa-clock"></span>8:00 AM - 5:00 PM</li>
                                     <li><span class="fa fa-map-marker-alt"></span>VENICE, ITALY</li>
                                 </ul>
-                                <a href="#" class="blg-dtl bttn bttn-danger">View Details</a>
+                                <a href="{{route('blog.details',$blog->id)}}" class="blg-dtl bttn bttn-danger">View Details</a>
                             </div>
                             <div class="publish-date">
                                 <span class="day">15</span><span class="month">Dec</span>
@@ -48,111 +48,7 @@
                         </div>
                     </div>
                     @endforeach
-                    {{-- <div class="col-sm-4">
-                        <div class="blog-container">
 
-                            <div class="Blogs-img">
-                                <img src="assets/images/Blogs/1.jpg" alt="">
-                            </div>
-                            <div class="Blogs-Desc Blog-Details">
-                                <h3><a href="#">Blogs Title</a></h3>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris itae erat conuat</p>
-                                <ul style="margin-bottom: 1em">
-                                    <li><span class="far fa-clock"></span>8:00 AM - 5:00 PM</li>
-                                    <li><span class="fa fa-map-marker-alt"></span>VENICE, ITALY</li>
-                                </ul>
-                                <a href="#" class="blg-dtl bttn bttn-danger">View Details</a>
-                            </div>
-                            <div class="publish-date">
-                                <span class="day">15</span><span class="month">Dec</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="blog-container">
-
-                            <div class="Blogs-img">
-                                <img src="assets/images/Blogs/1.jpg" alt="">
-                            </div>
-                            <div class="Blogs-Desc Blog-Details">
-                                <h3><a href="#">Blogs Title</a></h3>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris itae erat conuat</p>
-                                <ul style="margin-bottom: 1em">
-                                    <li><span class="far fa-clock"></span>8:00 AM - 5:00 PM</li>
-                                    <li><span class="fa fa-map-marker-alt"></span>VENICE, ITALY</li>
-                                </ul>
-                                <a href="#" class="blg-dtl bttn bttn-danger">View Details</a>
-                            </div>
-                            <div class="publish-date">
-                                <span class="day">15</span><span class="month">Dec</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="blog-container">
-
-                            <div class="Blogs-img">
-                                <img src="assets/images/Blogs/1.jpg" alt="">
-                            </div>
-                            <div class="Blogs-Desc Blog-Details">
-                                <h3><a href="#">Blogs Title</a></h3>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris itae erat conuat</p>
-                                <ul style="margin-bottom: 1em">
-                                    <li><span class="far fa-clock"></span>8:00 AM - 5:00 PM</li>
-                                    <li><span class="fa fa-map-marker-alt"></span>VENICE, ITALY</li>
-                                </ul>
-                                <a href="#" class="blg-dtl bttn bttn-danger">View Details</a>
-                            </div>
-                            <div class="publish-date">
-                                <span class="day">15</span><span class="month">Dec</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="blog-container">
-
-                            <div class="Blogs-img">
-                                <img src="assets/images/Blogs/1.jpg" alt="">
-                            </div>
-                            <div class="Blogs-Desc Blog-Details">
-                                <h3><a href="#">Blogs Title</a></h3>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris itae erat conuat</p>
-                                <ul style="margin-bottom: 1em">
-                                    <li><span class="far fa-clock"></span>8:00 AM - 5:00 PM</li>
-                                    <li><span class="fa fa-map-marker-alt"></span>VENICE, ITALY</li>
-                                </ul>
-                                <a href="#" class="blg-dtl bttn bttn-danger">View Details</a>
-                            </div>
-                            <div class="publish-date">
-                                <span class="day">15</span><span class="month">Dec</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="blog-container">
-
-                            <div class="Blogs-img">
-                                <img src="assets/images/Blogs/1.jpg" alt="">
-                            </div>
-                            <div class="Blogs-Desc Blog-Details">
-                                <h3><a href="#">Blogs Title</a></h3>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris itae erat conuat</p>
-                                <ul style="margin-bottom: 1em">
-                                    <li><span class="far fa-clock"></span>8:00 AM - 5:00 PM</li>
-                                    <li><span class="fa fa-map-marker-alt"></span>VENICE, ITALY</li>
-                                </ul>
-                                <a href="#" class="blg-dtl bttn bttn-danger">View Details</a>
-                            </div>
-                            <div class="publish-date">
-                                <span class="day">15</span><span class="month">Dec</span>
-                            </div>
-
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </section>

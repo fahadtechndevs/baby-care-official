@@ -37,6 +37,7 @@
                                                 <th>Package Name</th>
                                                 <th>Price</th>
                                                 <th>Theme</th>
+                                                <th>Status</th>
 
 
                                                     <th>Actions</th>
@@ -64,7 +65,7 @@
                                                 <td>
                                                      @foreach($packages as $package)
                                                     @if($package->id==$order->package_id)
-                                                    {{$package->price}}
+                                                    ${{$package->price}}
                                                     @endif
 
                                                     @endforeach
@@ -74,6 +75,15 @@
                                                             @if($thim->id==$order->theme_id)
                                                             {{
                                                                 $thim->title
+                                                            }}
+                                                            @endif
+                                                        @endforeach
+                                                </td>
+                                                 <td>
+                                                        @foreach($status as $state)
+                                                            @if($state->id==$order->status_id)
+                                                            {{
+                                                                $state->status
                                                             }}
                                                             @endif
                                                         @endforeach

@@ -13,8 +13,10 @@ class CreatePackageFeatureModelsTable extends Migration {
 	public function up() {
 		Schema::create('package_feature_models', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->integer('package_id');
-			$table->String('feature_id');
+			$table->Integer('package_id');
+			// $table->foreign('package_id')->references('id')->on('packages_models');
+			$table->Integer('features_id');
+			// $table->foreign('features_id')->references('id')->on('feature_models');
 			$table->timestamps();
 		});
 	}

@@ -39,6 +39,9 @@ Left side column. contains the sidebar -->
       <li>
         <a href="{{route('all.orders')}}"><i class="fa fa-map"></i><span>Orders</span></a>
       </li>
+      <li>
+        <a href="{{route('view.order.status')}}"><i class="fa fa-map"></i><span>Order Status</span></a>
+      </li>
 
       <li>
         <a href="{{route('feature.view')}}"><i class="fa fa-cube"></i><span> Features</span></a>

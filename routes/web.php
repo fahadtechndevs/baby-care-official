@@ -34,6 +34,7 @@ Route::get('/price', 'PriceController@create')->name('print');
 Route::get('login/view', 'AboutController@loginView')->name('login.view');
 Route::get('register/view', 'AboutController@registerView')->name('register.view');
 Route::get('forget/view', 'AboutController@forgetView')->name('forget.view');
+Route::get('package/user', 'PackagesController@packageUserView')->name('user.packages');
 //Backend Routes starts
 
 //Subscriber
@@ -53,6 +54,8 @@ Route::get('theme/view', 'ThemeController@show')->name('themes.view');
 Route::get('theme/create', 'ThemeController@create')->name('themes.create');
 Route::post('theme/store', 'ThemeController@store')->name('themes.store');
 Route::get('/destroy/theme/{id}', 'ThemeController@destroy')->name('theme.destroy');
+Route::get('theme/edit/show/{id}', 'ThemeController@themeEditShow')->name('themes.edit.show');
+Route::post('theme/edit/store/{id}', 'ThemeController@themeEditStore')->name('themeEditStore');
 //faqs
 Route::get('faqs/view', 'faqsController@show')->name('faqs.view');
 Route::get('faqs/add/view', 'faqsController@add')->name('faqs.add');
@@ -69,6 +72,7 @@ Route::get('block/destroy/{id}', 'BlockController@destroy')->name('block.destroy
 Route::get('/block/edit/show/{id}', 'BlockController@editShow')->name('block.edit.show');
 Route::post('/block/edit/store/{id}', 'BlockController@editStore')->name('block.edit.store');
 Route::get('/blogs/users', 'BlockController@BlogsToUser')->name('blog.user');
+Route::get('blog/details/{id}', 'BlockController@viewBlogDetails')->name('blog.details');
 //packages
 Route::get('package/view', 'PackagesController@show')->name('packages.view');
 Route::get('package/add/view', 'PackagesController@add')->name('packages.add');
@@ -79,6 +83,8 @@ Route::post('package/updatestore/{id}', 'PackagesController@updateStore')->name(
 //about
 Route::get('aboutpage', 'AboutController@editAbout')->name('edit.About');
 Route::post('aboutpage/edit/store/{id}', 'AboutController@store')->name('edit.store');
+//Notifications
+Route::get('notify', 'Notifications@sendAdminNotifications')->name('email');
 //Features
 Route::get('feature/view', 'FeatureController@show')->name('feature.view');
 Route::get('feature/add/view', 'FeatureController@add')->name('feature.add');
@@ -95,12 +101,26 @@ Route::get('user/order/get', 'FormController@userOrderShow')->name('show.order')
 Route::get('user/order/destroy/{id}', 'FormController@UserOrderDelete')->name('destroy.order');
 Route::get('order/edit/show/{id}', 'FormController@userOrderEditShow')->name('user.order.edit');
 Route::post('user/order/edit/save{id}', 'FormController@orderEditUserSave')->name('order.user.edit.save');
+Route::post('/package/feature', 'FormController@packageFrature')->name('package.feature');
+Route::get('order/status/{id}', 'FormController@orderStatusEdit')->name('order.status');
+Route::post('status/edit/store/{id}', 'FormController@statusEditStore')->name('status.edit.store');
+Route::get('renew/order/{id}', 'FormController@renewOrder')->name('renew');
+Route::post('renew/save/{id}', 'FormController@renewSave')->name('save.renew.order');
 //paypal-Integartion Routes
 Route::get('/paypal/{id}', 'OrderController@paypal')->name('paypal');
 Route::get('processPaypal', 'OrderController@processPaypal')->name('process.paypal');
 Route::get('cancelPaypal', 'OrderController@cancelPaypal')->name('cancel.paypal');
+//OrderStatus
+Route::get('view/order/Status', 'OrderStatusController@viewstatus')->name('view.order.status');
+Route::get('create/order/status', 'OrderStatusController@create')->name('create.order.status');
+Route::post('store/order/status', 'OrderStatusController@store')->name('store.order.status');
+Route::get('edit/order/status/{id}', 'OrderStatusController@editView')->name('order.status.edit');
+Route::get('destroy/order/status/{id}', 'OrderStatusController@destroy')->name('order.status.destroy');
+Route::post('save/order/status/{id}', 'OrderStatusController@editSave')->name('order.status.save');
 
 // Route::get('test', function () {
-// 	$alldata = PackageFeatureModel::where('package_id', 18)->delete();
-// 	dd($alldata);
+
+// 	// return back()->withSuccess('Mail Is Sended Successfully');
+
+// 	echo date('Y-m-d', strtotime('+11 months'));
 // });

@@ -37,7 +37,7 @@
                             <h1>We are your child care website partner!</h1>
                             <p>We are your child care website partner!</p>
                         </div>
-                        <a href="#" class="bttn bttn-danger">Visit Templates</a>
+                        <a href="{{route('design')}}" class="bttn bttn-danger">Visit Templates</a>
                     </div>
                 </div>
             </div>

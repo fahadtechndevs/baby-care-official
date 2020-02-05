@@ -61,21 +61,22 @@ class ServiceController extends Controller {
 			'image' => 'nullable|image',
 			'description' => 'required|string',
 			'show' => 'required|in:1,0']);
-		$data = new ServiceModel();
+		$data = ServiceModel::find($id);
 		$data->title = $request->title;
 		$data->description = $request->description;
 		$data->show = $request->show;
 		if ($request->hasfile('image')) {
 			$data->image = $request->image->store('uploads');
-			if (ServiceModel::find($id)->update($data)) {
-				// return back()->withSuccess('Selected Service Is Updated Successfully');
-				return redirect()->route('service.show')->withSuccess('Selected Service is Updated Successfully');
-
-			} else {
-				// return back()->withError('Something Went Wrong During Updating Service');
-				return redirect()->route('service.show')->withError('Something Went Wrong');
-			}
-
 		}
+		if ($data->update()) {
+			// return back()->withSuccess('Selected Service Is Updated Successfully');
+			return redirect()->route('service.show')->withSuccess('Selected Service is Updated Successfully');
+
+		} else {
+			// return back()->withError('Something Went Wrong During Updating Service');
+			return redirect()->route('service.show')->withError('Something Went Wrong');
+		}
+
 	}
+
 }

@@ -67,11 +67,12 @@
                   <td class="sorting_1"><?php echo ($loop->index) + 1; ?></td>
 
                  {{--  <td>{{$theme->url}}</td> --}}
+                 <td>{{$theme->title}}</td>
 
                   <td><img style="width: 100px;height: 100px;" src="{{Storage::disk('public')->url($theme->image)}}"></td>
 
                   <td>
-                       <a class="btn btn-primary" href="{{-- {{route('service.edit.show',$services->id)}} --}}"><i class="fa fa-edit"></i></a>
+                       <a class="btn btn-primary" href="{{route('themes.edit.show',$theme->id)}}"><i class="fa fa-edit"></i></a>
                          <a class="btn btn-danger" href="{{route('theme.destroy',$theme->id)}}"><i class="fa fa-trash"></i></a>
                   </td>
 

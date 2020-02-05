@@ -53,7 +53,7 @@
                                                     @foreach($packages as $package)
 
                                                     <label for="">
-                                                        <input type="radio" name="package_id" value="{{$package->id}}">
+                                                        <input type="radio" name="package_id" id="package_id" value="{{$package->id}}">
                                                         {{$package->title}}({{$package->price}})
 
 
@@ -67,11 +67,11 @@
                                                 <!-- tempalte or cv -->
                                                 <div class="package tempalte">
                                                     <p>Template or Custom Design?</p>
-                                                    <label for="">
-                                                        <input type="radio" name="template_logo" value="I Will Choose A Template">I Will Choose A Template
+                                                    <label >
+                                                        <input type="radio" name="template_logo" value="I Will Choose A Template {{old('template_logo')}}">I Will Choose A Template
                                                     </label>
-                                                    <label for="">
-                                                        <input type="radio" name="template_logo" value="I Want A Custom Design (Add $1000)">I Want A Custom Design (Add $1000)
+                                                    <label >
+                                                        <input type="radio" name="template_logo" value="I Want A Custom Design (Add $1000) {{old('template_logo')}}">I Want A Custom Design (Add $1000)
                                                     </label>
                                                 </div>
 
@@ -79,14 +79,14 @@
                                                 <p>If you have chosen Template, please specify Template Name:</p>
                                                 <div class="form-group">
 
-                                                        <select class="form-control" name="theme_id">
+                                                        <select class="form-control" name="theme_id" id="theme_id">
                                                             @foreach($themes as $theme)
                                                             <option value="{{$theme->id}}">{{$theme->title}}</option>
                                                          @endforeach
                                                         </select>
 
                                                     </div>
-                                                <a href="#" class="special"> or check list of templates here</a>
+                                                <a href="{{route('design')}}" class="special"> or check list of templates here</a>
                                             </div>
                                             <!-- More Freatures and ?Services -->
                                             <div class=" webssite">
@@ -96,7 +96,7 @@
                                                 <div class="package choose-pkg">
                                                     @foreach($features as $feature)
                                                     <label for="">
-                                                        <input type="checkbox" name="features[]" value="{{$feature->id}}">
+                                                        <input type="checkbox" name="features[]" value="{{$feature->id}} {{old('feature->id')}}">
                                                          {{$feature->title}}
                                                     </label>
                                                     @endforeach
@@ -115,14 +115,14 @@
                                                 <!-- logo desifng -->
                                                 <div class="package choose-pkg">
                                                     <p>Please select one</p>
-                                                    <label for="">
-                                                        <input type="radio" name="logo_design" value="I Already Have A Logo Design That I Want To Use">I Already Have A Logo Design That I Want To Use
+                                                    <label >
+                                                        <input type="radio" name="logo_design" value="I Already Have A Logo Design That I Want To Use" {{old('logo_design')}}>I Already Have A Logo Design That I Want To Use
                                                     </label>
-                                                    <label for="">
-                                                        <input type="radio" name="logo_design" value="I Do Not Have One And Want To Use A Simple, Text-Based Logo">I Do Not Have One And Want To Use A Simple, Text-Based Logo
+                                                    <label>
+                                                        <input type="radio" name="logo_design" value="I Do Not Have One And Want To Use A Simple, Text-Based Logo {{old('logo_design')}}">I Do Not Have One And Want To Use A Simple, Text-Based Logo
                                                     </label>
-                                                    <label for="">
-                                                        <input type="radio" name="logo_design" value="I Would Like Websites For Daycares To Design A New Logo (Add $349)">I Would Like Websites For Daycares To Design A New Logo (Add $349)
+                                                    <label >
+                                                        <input type="radio" name="logo_design" value="I Would Like Websites For Daycares To Design A New Logo (Add $349) {{old('logo_design')}}">I Would Like Websites For Daycares To Design A New Logo (Add $349)
                                                     </label>
                                                 </div>
                                             </div>
@@ -132,25 +132,25 @@
                                                 <!-- logo desifng -->
                                                 <div class="package choose-pkg">
                                                     <p>Please select one</p>
-                                                    <label for="">
-                                                        <input type="radio" name="domain_details" value="I Already Own My Domain. My Domain Is">I Already Own My Domain. My Domain Is
+                                                    <label >
+                                                        <input type="radio" name="domain_details" value="I Already Own My Domain. My Domain Is {{old('domain_details')}}">I Already Own My Domain. My Domain Is
                                                     </label>
 
-                                                    <label for="">
-                                                        <input type="radio" name="domain_details" value="I Need To Purchase A Domain. I Would Like To Secure"> I Need To Purchase A Domain. I Would Like To Secure
+                                                    <label >
+                                                        <input type="radio" name="domain_details" value="I Need To Purchase A Domain. I Would Like To Secure {{old('domain_details')}}"> I Need To Purchase A Domain. I Would Like To Secure
                                                     </label>
                                                     <div class="form-group">
-                                                        <input type="url" class="form-control" placeholder="www." name="own_domain">
+                                                        <input type="url" class="form-control" placeholder="www." name="own_domain" value="{{old('own_domain')}}">
                                                     </div>
 
 
                                                     <p>I would like to pay the Web & Email Hosting & Support (annually saves 20%):</p>
 
-                                                    <label for="">
-                                                        <input type="radio" name="extra_pay" value="$19 Monthly"> $19 Monthly
+                                                    <label >
+                                                        <input type="radio" name="extra_pay" value="$19 Monthly {{old('extra_pay')}}"> $19 Monthly
                                                     </label>
                                                     <label for="">
-                                                        <input type="radio" name="extra_pay" value=" $180 Annually"> $180 Annually
+                                                        <input type="radio" name="extra_pay" value=" $180 Annually {{old('extra_pay')}}"> $180 Annually
                                                     </label>
                                                 </div>
                                             </div>
@@ -159,18 +159,20 @@
                                                 <h4>Additional Notes & Comments</h4>
                                                 <div class="package choose-pkg">
                                                     <p>Are you ready to get started?</p>
-                                                    <label for="">
-                                                        <input type="radio" name="notes" value="Yes - I Am Ready To Get Started!">Yes - I Am Ready To Get Started!
+                                                    <label>
+                                                        <input type="radio" name="notes" value="Yes - I Am Ready To Get Started! {{old('notes')}}">Yes - I Am Ready To Get Started!
                                                     </label>
-                                                    <label for="">
-                                                        <input type="radio" name="notes" value="Not Sure / Just Inquiring">Not Sure / Just Inquiring
+                                                    <label >
+                                                        <input type="radio" name="notes" value="Not Sure / Just Inquiring {{old('notes')}}">Not Sure / Just Inquiring
                                                     </label>
-                                                    <label for="">
-                                                        <input type="radio" name="notes" value="I Would Like To Setup A Phone Consultation To Go Over My Questions">I Would Like To Setup A Phone Consultation To Go Over My Questions
+                                                    <label>
+                                                        <input type="radio" name="notes" value="I Would Like To Setup A Phone Consultation To Go Over My Questions {{old('notes')}}">I Would Like To Setup A Phone Consultation To Go Over My Questions
                                                     </label>
                                                     <br>
                                                     <label for="">Additional Comments</label>
-                                                    <textarea name="additional_comments" id="" cols="30" rows="10" class="form-control"></textarea>
+                                                    <textarea name="additional_comments" cols="30" rows="10" class="form-control">
+                                                        {{old('additional_comments')}}
+                                                    </textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -233,6 +235,30 @@
                 checkboxClass: 'icheckbox_flat-red',
                 radioClass: 'iradio_flat-red'
             });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#package_id').on('click',function(){
+               var id= $(this).val();
+                $.ajax({
+                    type:'post',
+                    datatype:'json',
+                    url:'{{route('package.feature')}}',
+                    data:{
+                        "_token": "{{ csrf_token() }}",
+                        'package_id':id
+                    },
+                success:function(res){
+
+
+                }
+
+                 });
+
+            });
+
+
         });
     </script>
 </body>

@@ -30,6 +30,11 @@
               <label for="exampleInputEmail1">Title</label>
               <input value="" name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Features Title">
             </div>
+            <div class="form-group">
+
+              <label for="exampleInputEmail1">Price</label>
+              <input value="" name="price" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Features Price">
+            </div>
 
             <div class="box-footer">
               <button type="submit" class="btn btn-primary">Submit</button>

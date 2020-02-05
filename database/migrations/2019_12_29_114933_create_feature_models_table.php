@@ -14,6 +14,7 @@ class CreateFeatureModelsTable extends Migration {
 		Schema::create('feature_models', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->String('title');
+			$table->String('price');
 			$table->timestamps();
 		});
 	}

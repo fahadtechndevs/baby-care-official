@@ -27,8 +27,13 @@
           <div class="box-body">
             <div class="form-group">
 
-              <label for="exampleInputEmail1">Feature</label>
+              <label for="exampleInputEmail1">Title</label>
               <input value="{{$feature->title}}" name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Features">
+            </div>
+            <div class="form-group">
+
+              <label for="exampleInputEmail1">Price</label>
+              <input value="{{$feature->price}}" name="price" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Features">
             </div>
 
             <div class="box-footer">

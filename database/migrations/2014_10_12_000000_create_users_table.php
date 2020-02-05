@@ -15,7 +15,6 @@ class CreateUsersTable extends Migration {
 			$table->bigIncrements('id');
 			$table->string('name');
 			$table->string('business_name');
-			$table->string('mobile_number');
 			$table->string('own_number');
 			$table->string('city');
 			$table->string('country');
